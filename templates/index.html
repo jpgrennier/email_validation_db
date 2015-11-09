@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Email Validation w/ DB</title>
+</head>
+<body>
+	<h1>These are all the email addresses in the DB</h1>
+  {% for email in email: %}
+    <p>Email: {{email['email']}}</p>
+    <hr>
+  {% endfor %}
+	<h1>Please enter a valid email address.</h1>
+	<form action='/email' method='POST'>
+		<label for='email'>Email Address:<input type='text' name='email' id='email'></label>
+		<input type='submit' value='submit'>
+	</form>
+</body>
+</html>

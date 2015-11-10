@@ -7,10 +7,17 @@
 <body>
 	<h1>These are all the email addresses in the DB</h1>
   {% for email in email: %}
-    <p>Email: {{email['email']}}</p>
+    <p>{{email['email']}} {{email['created_at']}} </p>
     <hr>
   {% endfor %}
 	<h1>Please enter a valid email address.</h1>
+	{% with messages = get_flashed_messages() %}
+    	{% if messages %}
+      		{% for message in messages %}
+        		<p>{{message}}</p>
+      		{% endfor %}
+    	{% endif %}
+  	{% endwith %}
 	<form action='/email' method='POST'>
 		<label for='email'>Email Address:<input type='text' name='email' id='email'></label>
 		<input type='submit' value='submit'>
